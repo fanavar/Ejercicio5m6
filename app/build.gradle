@@ -37,6 +37,10 @@ android {
 
 dependencies {
 
+    def nav_version = "2.6.0"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
     def retro_version = "2.9.0"
     implementation "com.squareup.retrofit2:retrofit:$retro_version"
     implementation "com.squareup.retrofit2:converter-gson:$retro_version"
@@ -49,4 +53,9 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+
+
+    //ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
 }
