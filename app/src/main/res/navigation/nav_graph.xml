@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/listadoTerrenos"
-        android:name="cl.awakelab.ejercicio5m6.presenter.ListadoTerrenos"
+        android:name="cl.awakelab.ejercicio5m6.view.ListadoTerrenos"
         android:label="fragment_listado_terrenos"
         tools:layout="@layout/fragment_listado_terrenos" />
 </navigation>
