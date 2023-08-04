@@ -33,7 +33,7 @@ class ListadoTerrenos : Fragment() {
     private fun initAdapter(){
         val adapter = AdapterTerreno()
         binding.recyclerViewTerreno.adapter = adapter
-        terrenoVM.terrenosLiveData.observe(viewLifecycleOwner){
+        terrenoVM.terrenosLiveData().observe(viewLifecycleOwner){
             adapter.setData(it)
         }
     }

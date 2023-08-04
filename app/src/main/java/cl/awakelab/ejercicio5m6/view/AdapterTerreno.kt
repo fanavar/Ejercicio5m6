@@ -3,13 +3,14 @@ package cl.awakelab.ejercicio5m6.view
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import cl.awakelab.ejercicio5m6.data.local.TerrenoEntity
 import cl.awakelab.ejercicio5m6.data.remote.Terreno
 import cl.awakelab.ejercicio5m6.databinding.ItemTerrenoBinding
 import coil.load
 
 class AdapterTerreno: RecyclerView.Adapter<AdapterTerreno.ItemTerrenoViewHolder>(){
     lateinit var binding: ItemTerrenoBinding
-    private val listItemTerrenos = mutableListOf<Terreno>()
+    private val listItemTerrenos = mutableListOf<TerrenoEntity>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemTerrenoViewHolder {
         binding = ItemTerrenoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -26,15 +27,15 @@ class AdapterTerreno: RecyclerView.Adapter<AdapterTerreno.ItemTerrenoViewHolder>
         holder.bind(terreno)
     }
 
-    fun setData(terreno: List<Terreno>){
+    fun setData(terreno: List<TerrenoEntity>){
         this.listItemTerrenos.clear()
         this.listItemTerrenos.addAll(terreno)
         notifyDataSetChanged()
 
     }
     class ItemTerrenoViewHolder (val v: ItemTerrenoBinding): RecyclerView.ViewHolder(v.root){
-        fun bind(terreno: Terreno){
-            v.imgTerreno.load(terreno.img)
+        fun bind(terreno: TerrenoEntity){
+            v.imgTerreno.load(terreno.imagen)
         }
     }
 }
