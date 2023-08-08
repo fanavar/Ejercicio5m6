@@ -5,15 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.DEFAULT_ARGS_KEY
-import cl.awakelab.ejercicio5m6.R
+import androidx.fragment.app.activityViewModels
 import cl.awakelab.ejercicio5m6.databinding.FragmentDetalleBinding
+import coil.load
 
 private const val ARG_PARAM1 = "id"
 
 
 class DetalleFragment : Fragment() {
     private lateinit var binding: FragmentDetalleBinding
+    private val terrenoVM: TerrenoVM by activityViewModels()
     private var param1: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +30,12 @@ class DetalleFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentDetalleBinding.inflate(layoutInflater, container, false)
-        binding.textViewID.text = param1
+         terrenoVM.obtenerTerrenoLiveData(param1.toString()).observe(viewLifecycleOwner){
+             binding.textViewID.text = it.id
+             binding.textViewPrice.text = it.precio.toString()
+             binding.textViewType.text = it.tipo
+             binding.imageView.load(it.imagen)
+         }
         return binding.root
     }
 
