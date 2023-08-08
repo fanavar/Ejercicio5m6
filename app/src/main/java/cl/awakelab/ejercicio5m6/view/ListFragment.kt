@@ -6,11 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import cl.awakelab.ejercicio5m6.databinding.FragmentListadoTerrenosBinding
+import cl.awakelab.ejercicio5m6.databinding.FragmentListBinding
 
 
-class ListadoTerrenos : Fragment() {
-    lateinit var binding: FragmentListadoTerrenosBinding
+
+class ListFragment : Fragment() {
+    lateinit var binding: FragmentListBinding
     private val terrenoVM: TerrenoVM by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +24,7 @@ class ListadoTerrenos : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentListadoTerrenosBinding.inflate(layoutInflater, container, false)
+        binding = FragmentListBinding.inflate(layoutInflater, container, false)
         initAdapter()
         binding.btnCargar.setOnClickListener{
             terrenoVM.getAllTerrenos()

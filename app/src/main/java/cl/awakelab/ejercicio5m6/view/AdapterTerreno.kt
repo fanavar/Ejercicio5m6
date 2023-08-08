@@ -1,8 +1,11 @@
 package cl.awakelab.ejercicio5m6.view
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import cl.awakelab.ejercicio5m6.R
 import cl.awakelab.ejercicio5m6.data.local.TerrenoEntity
 import cl.awakelab.ejercicio5m6.data.remote.Terreno
 import cl.awakelab.ejercicio5m6.databinding.ItemTerrenoBinding
@@ -36,6 +39,11 @@ class AdapterTerreno: RecyclerView.Adapter<AdapterTerreno.ItemTerrenoViewHolder>
     class ItemTerrenoViewHolder (val v: ItemTerrenoBinding): RecyclerView.ViewHolder(v.root){
         fun bind(terreno: TerrenoEntity){
             v.imgTerreno.load(terreno.imagen)
+            v.cardTerreno.setOnClickListener {
+                val bundle = Bundle()
+                bundle.putString("id", terreno.id)
+                Navigation.findNavController(v.root).navigate(R.id.action_listFragment_to_detalleFragment, bundle)
+            }
         }
     }
 }
